@@ -3,41 +3,41 @@
 
 #### 用法 
 ```html
-	<template>
-		<view class="content">
-			<button @click="open">Open Calendar</button>
-			<wxh-calendar-date-picker ref="datePiker" 
-				@pickSuccess="pickSuccess"   
-				title="日期选择器" 
-				:holidays="holidays" 
-				:weekendCanPick="true" 
-				:holidayCanPick="true" 
-				:lostdayCanPick="false"
-				:beginDate="beginDate"
-				:maxMonth="6"/>
-			<text>date:{{date}}</text>
-		</view>
-	</template>
-	
-	<script>
-		export default {
-			data() {
-				return {
-					date: null, //选择日期
-					holidays:['2021-12-12','2022-1-1','2022-2-14','2022-5-1','2022-9-10','2022-10-1'], //休息日数组
-					beginDate: new Date() , //最早可选日期为当前日期
-				}
+<template>
+	<view class="content">
+		<button @click="open">Open Calendar</button>
+		<wxh-calendar-date-picker ref="datePiker" 
+			@pickSuccess="pickSuccess"   
+			title="日期选择器" 
+			:holidays="holidays" 
+			:weekendCanPick="true" 
+			:holidayCanPick="true" 
+			:lostdayCanPick="false"
+			:beginDate="beginDate"
+			:maxMonth="6"/>
+		<text>date:{{date}}</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				date: null, //选择日期
+				holidays:['2021-12-12','2022-1-1','2022-2-14','2022-5-1','2022-9-10','2022-10-1'], //休息日数组
+				beginDate: new Date() , //最早可选日期为当前日期
+			}
+		},
+		methods: {
+			open(){
+				this.$refs.datePiker.show();
 			},
-			methods: {
-				open(){
-					this.$refs.datePiker.show();
-				},
-				pickSuccess(date){
-					this.date = date
-				}
+			pickSuccess(date){
+				this.date = date
 			}
 		}
-	</script>
+	}
+</script>
 ```
 
 ## API
